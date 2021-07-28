@@ -32,13 +32,17 @@ async def getCommands(ctx):
                                        or !purge all to clear entire channel.""")
 async def purge(ctx, amount = None):
     if amount is None:
-        await ctx.channel.purge(limit = 25)
-        await ctx.send(f'25 messages purged by {ctx.message.author.mention}')
+        numMsg = 0
+        async for msg in ctx.channel.history(limit = None):
+            numMsg += 1
+        await ctx.channel.purge(limit = 26)
+        numMsg -= 1
+        await ctx.send(f'{numMsg} message(s) purged by {ctx.message.author.mention}', delete_after = 5)
     elif amount == "all":
         await ctx.channel.purge()
-        await ctx.send(f'All messages purged by {ctx.message.author.mention}')
+        await ctx.send(f'All messages purged by {ctx.message.author.mention}', delete_after = 5)
     else:
-        await ctx.channel.purge(limit = int(amount))
-        await ctx.send(f'{amount} messages purged by {ctx.message.author.mention}')
+        await ctx.channel.purge(limit = int(amount) + 1)
+        await ctx.send(f'{amount} message(s) purged by {ctx.message.author.mention}', delete_after = 5)
 
 bot.run(TOKEN)
