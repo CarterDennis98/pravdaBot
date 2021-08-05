@@ -25,16 +25,19 @@ async def getCommands(ctx):
 @bot.command(name='purge', help="""Purges messages from current channel. Defaults to 
                                        20 messages, use !purge [amount] to delete set amount
                                        or !purge all to clear entire channel.""")
-async def purge(ctx, amount=None):
+async def purge(ctx, amount=0):
     # Get number of messages in the channel
     numMsg = 0
     async for msg in ctx.channel.history(limit=None):
         numMsg += 1
-    if amount is None:
+    if amount == 0:
         # Default purge command, clear up to 20 messages
         await ctx.channel.purge(limit=21)
         numMsg -= 1
-        await ctx.send(f'{numMsg} message(s) purged by {ctx.message.author.mention}', delete_after=5)
+        if numMsg > 20:
+            await ctx.send(f'20 messages purged by {ctx.message.author.mention}', delete_after=5)
+        else:
+            await ctx.send(f'{numMsg} message(s) purged by {ctx.message.author.mention}', delete_after=5)
     elif amount == 'all':
         # Ask user for confirmation they want to clear channel and then clear it
         msg = await ctx.send(f'Are you sure you want to clear all messages in this channel (#{ctx.channel})?')
@@ -55,15 +58,19 @@ async def purge(ctx, amount=None):
             return
     else:
         # At most, delete the given amount of messages
-        await ctx.channel.purge(limit=int(numMsg) + 1)
+        await ctx.channel.purge(limit=int(amount) + 1)
         numMsg -= 1
-        await ctx.send(f'{numMsg} message(s) purged by {ctx.message.author.mention}', delete_after=5)
+        if numMsg > amount:
+            await ctx.send(f'{amount} message(s) purged by {ctx.message.author.mention}', delete_after=5)
+        else:
+            await ctx.send(f'{numMsg} message(s) purged by {ctx.message.author.mention}', delete_after=5)
 
 # Set up a poll with a set number of choices (1-5) and a set time
-@bot.command(name='poll', help="""Set up a poll with 1-5 options. """)
-async def poll(ctx, *options: str):
-    if len(options) <= 1:
-        # If there is 1 or 0 options, tell user input is invalid
+@bot.command(name='poll', help="""Set up a poll with 2-5 options. If no options are given, set up a 
+                                  simple Yes/No poll.""")
+async def poll(ctx, title='Poll', *options: str):
+    if len(options) <= 1 and len(options) != 0:
+        # If there is 1 or negative options, tell user input is invalid
         await ctx.send(f'{ctx.message.author.mention}, you must enter more than one option to create a poll!')
         await asyncio.sleep(5)
         await ctx.channel.purge(limit=2)
@@ -72,12 +79,13 @@ async def poll(ctx, *options: str):
         await ctx.send(f'{ctx.message.author.mention}, you cannot enter more than 5 options when creating a poll!')
         await asyncio.sleep(5)
         await ctx.channel.purge(limit=2)
-    elif len(options) == 2 and options[0] == 'yes' and options[1] == 'no':
-        reactions = ['✅', '❌']
-        poll = discord.Embed(title='Poll', color=discord.Color.blue())
-        poll.add_field(name = f'{options[0]} ✅', value = 'val1')
-        poll.add_field(name = f'{options[1]} ❌', value = 'val2')
+    elif len(options) == 0:
+        poll = discord.Embed(title=f'{title}', color=discord.Color.red())
+        poll.add_field(name = '✅', value = 'Yes')
+        poll.add_field(name = '❌', value = 'No')
         msg = await ctx.send(embed = poll)
+        await msg.add_reaction('✅')
+        await msg.add_reaction('❌')
     else:
         await ctx.send(f'Generate poll with {len(options)} options: {options}')
 
