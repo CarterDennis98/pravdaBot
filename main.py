@@ -30,7 +30,7 @@ async def purge(ctx, amount='0'):
     numMsg = 0
     async for msg in ctx.channel.history(limit=None):
         numMsg += 1
-    if amount == int(0):
+    if int(amount) == 0:
         # Default purge command, clear up to 20 messages
         await ctx.channel.purge(limit=21)
         numMsg -= 1
@@ -71,23 +71,33 @@ async def purge(ctx, amount='0'):
 async def poll(ctx, title='Poll', *options: str):
     if len(options) <= 1 and len(options) != 0:
         # If there is 1 or negative options, tell user input is invalid
-        await ctx.send(f'{ctx.message.author.mention}, you must enter more than one option to create a poll!')
+        await ctx.send(f'{ctx.message.author.mention}, you must enter more than one option to create a poll!',
+                       delete_after=5)
         await asyncio.sleep(5)
         await ctx.channel.purge(limit=2)
     elif len(options) > 5:
         # If there are more than 5 options, tell user input is invalid
-        await ctx.send(f'{ctx.message.author.mention}, you cannot enter more than 5 options when creating a poll!')
-        await asyncio.sleep(5)
-        await ctx.channel.purge(limit=2)
+        await ctx.send(f'{ctx.message.author.mention}, you cannot enter more than 5 options when creating a poll!',
+                       delete_after=5)
     elif len(options) == 0:
         poll = discord.Embed(title=f'{title}', color=discord.Color.red())
-        poll.add_field(name = '✅', value = 'Yes')
-        poll.add_field(name = '❌', value = 'No')
-        msg = await ctx.send(embed = poll)
+        poll.add_field(name='✅', value='Yes')
+        poll.add_field(name='❌', value='No')
+        msg = await ctx.send(embed=poll)
         await msg.add_reaction('✅')
         await msg.add_reaction('❌')
     else:
-        await ctx.send(f'Generate poll with {len(options)} options: {options}')
+        await ctx.send(f'Options: {options}')
+        poll = discord.Embed(title=f'{title}', color=discord.Color.red())
+        reactions = ['1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣']
+        i = 0
+        for option in options:
+            poll.add_field(name=reactions[i], value=option)
+            i += 1
+        msg = await ctx.send(embed=poll)
+        
+        for reaction in reactions:
+            await msg.add_reaction(reaction)
 
     # await ctx.author.send(f'I received your poll command with choices: {options}', delete_after = 10)
 
