@@ -1,4 +1,5 @@
 import os
+import datetime
 import asyncio
 import discord
 from discord.ext import commands
@@ -18,8 +19,13 @@ async def on_ready():
 # Show user a list of commands
 @bot.command(name='commands', help='View a list of bot commands')
 async def getCommands(ctx):
+    embed=discord.Embed(title='Commands', color=discord.Color.green())
     for command in (bot.commands):
-        print(command)
+        if str(command) == 'help':
+            embed.add_field(name='!help:', value='Use !help [command] to see how to use the command')
+        else:
+            embed.add_field(name=f'!{str(command)}:', value=f'{str(command.help)}')
+    await ctx.send(embed=embed)
 
 # Purge messges from current channel
 @bot.command(name='purge', help="""Purges messages from current channel. Defaults to 
@@ -67,7 +73,9 @@ async def purge(ctx, amount='0'):
 
 # Set up a poll with a set number of choices (1-5) and a set time
 @bot.command(name='poll', help="""Set up a poll with 2-5 options. If no options are given, set up a 
-                                  simple Yes/No poll.""")
+                                  simple Yes/No poll. Format is as follows: !poll [title] [options]
+                                  If you want to have spaces in your title/options make sure to put them 
+                                  within double ("abc") quotes.""")
 async def poll(ctx, title='Poll', *options: str):
     if len(options) <= 1 and len(options) != 0:
         # If there is 1 or negative options, tell user input is invalid
@@ -80,7 +88,7 @@ async def poll(ctx, title='Poll', *options: str):
         await ctx.send(f'{ctx.message.author.mention}, you cannot enter more than 5 options when creating a poll!',
                        delete_after=5)
     elif len(options) == 0:
-        poll = discord.Embed(title=f'{title}', color=discord.Color.red())
+        poll = discord.Embed(title=f'{title}', color=discord.Color.red(), timestamp=datetime.datetime.utcnow())
         poll.add_field(name='✅', value='Yes')
         poll.add_field(name='❌', value='No')
         msg = await ctx.send(embed=poll)
@@ -88,7 +96,7 @@ async def poll(ctx, title='Poll', *options: str):
         await msg.add_reaction('❌')
     else:
         await ctx.send(f'Options: {options}')
-        poll = discord.Embed(title=f'{title}', color=discord.Color.red())
+        poll = discord.Embed(title=f'{title}', color=discord.Color.red(), timestamp=datetime.datetime.utcnow())
         reactions = ['1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣']
         i = 0
         for option in options:
@@ -96,8 +104,10 @@ async def poll(ctx, title='Poll', *options: str):
             i += 1
         msg = await ctx.send(embed=poll)
         
-        for reaction in reactions:
-            await msg.add_reaction(reaction)
+        i = 0
+        while i < len(options):
+            await msg.add_reaction(reactions[i])
+            i += 1
 
     # await ctx.author.send(f'I received your poll command with choices: {options}', delete_after = 10)
 
