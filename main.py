@@ -29,8 +29,8 @@ async def getCommands(ctx):
 
 # Purge messges from current channel
 @bot.command(name='purge', help="""Purges messages from current channel. Defaults to 
-                                       20 messages, use !purge [amount] to delete set amount
-                                       or !purge all to clear entire channel.""")
+                                   20 messages, use !purge [amount] to delete set amount
+                                   or !purge all to clear entire channel.""")
 async def purge(ctx, amount=''):
     # Get number of messages in the channel
     numMsg = 0
@@ -100,7 +100,7 @@ async def poll(ctx, title='Poll', *options: str):
         reactions = ['1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣']
         i = 0
         for option in options:
-            poll.add_field(name=reactions[i], value=option)
+            poll.add_field(name=reactions[i], value=option, inline=False)
             i += 1
         msg = await ctx.send(embed=poll)
         
@@ -109,7 +109,12 @@ async def poll(ctx, title='Poll', *options: str):
             await msg.add_reaction(reactions[i])
             i += 1
 
-    # await ctx.author.send(f'I received your poll command with choices: {options}', delete_after = 10)
-
+# Key headcount/interest check
+@bot.command(name='hc', help="""Set up a headcount for the desire dungeon with !hc ["dungone name"], 
+                                generate headcount for exaltation dungeons (!hc [exaltation]),
+                                generate rune check (!hc [runes], or generate headcount for all dungeons (!hc)""")
+async def hc(ctx, dungeon='all'):
+    if(dungeon == 'all'):
+        await ctx.send("Generate hc for all keys")
 
 bot.run(TOKEN)
