@@ -31,12 +31,12 @@ async def getCommands(ctx):
 @bot.command(name='purge', help="""Purges messages from current channel. Defaults to 
                                        20 messages, use !purge [amount] to delete set amount
                                        or !purge all to clear entire channel.""")
-async def purge(ctx, amount='0'):
+async def purge(ctx, amount=''):
     # Get number of messages in the channel
     numMsg = 0
     async for msg in ctx.channel.history(limit=None):
         numMsg += 1
-    if int(amount) == 0:
+    if amount == '':
         # Default purge command, clear up to 20 messages
         await ctx.channel.purge(limit=21)
         numMsg -= 1
