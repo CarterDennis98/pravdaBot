@@ -2,6 +2,7 @@ import os
 import datetime
 import asyncio
 import discord
+from discord import file
 from discord.ext import commands
 from dotenv import load_dotenv
 
@@ -19,12 +20,14 @@ async def on_ready():
 # Show user a list of commands
 @bot.command(name='commands', help='View a list of bot commands')
 async def getCommands(ctx):
-    embed=discord.Embed(title='Commands', color=discord.Color.green())
+    embed = discord.Embed(title='Commands', color=discord.Color.green())
     for command in (bot.commands):
         if str(command) == 'help':
-            embed.add_field(name='!help:', value='Use !help [command] to see how to use the command')
+            embed.add_field(
+                name='!help:', value='Use !help [command] to see how to use the command')
         else:
-            embed.add_field(name=f'!{str(command)}:', value=f'{str(command.help)}')
+            embed.add_field(name=f'!{str(command)}:',
+                            value=f'{str(command.help)}')
     await ctx.send(embed=embed)
 
 # Purge messges from current channel
@@ -88,7 +91,8 @@ async def poll(ctx, title='Poll', *options: str):
         await ctx.send(f'{ctx.message.author.mention}, you cannot enter more than 5 options when creating a poll!',
                        delete_after=5)
     elif len(options) == 0:
-        poll = discord.Embed(title=f'{title}', color=discord.Color.red(), timestamp=datetime.datetime.utcnow())
+        poll = discord.Embed(title=f'{title}', color=discord.Color.red(
+        ), timestamp=datetime.datetime.utcnow())
         poll.add_field(name='✅', value='Yes')
         poll.add_field(name='❌', value='No')
         msg = await ctx.send(embed=poll)
@@ -96,14 +100,15 @@ async def poll(ctx, title='Poll', *options: str):
         await msg.add_reaction('❌')
     else:
         await ctx.send(f'Options: {options}')
-        poll = discord.Embed(title=f'{title}', color=discord.Color.red(), timestamp=datetime.datetime.utcnow())
+        poll = discord.Embed(title=f'{title}', color=discord.Color.red(
+        ), timestamp=datetime.datetime.utcnow())
         reactions = ['1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣']
         i = 0
         for option in options:
             poll.add_field(name=reactions[i], value=option, inline=False)
             i += 1
         msg = await ctx.send(embed=poll)
-        
+
         i = 0
         while i < len(options):
             await msg.add_reaction(reactions[i])
@@ -114,7 +119,42 @@ async def poll(ctx, title='Poll', *options: str):
                                 generate headcount for exaltation dungeons (!hc [exaltation]),
                                 generate rune check (!hc [runes], or generate headcount for all dungeons (!hc)""")
 async def hc(ctx, dungeon='all'):
-    if(dungeon == 'all'):
-        await ctx.send("Generate hc for all keys")
+    if(dungeon == 'exaltations'):
+        embed = discord.Embed(title='Headcount for Exaltation Dungeons', color=discord.Color.blue(),
+                              timestamp=datetime.datetime.utcnow())
+        embed.add_field(name=f'Headcount started for Exaltation Dungeons by {ctx.message.author.name}!',
+                        value="""React with any keys you are willing to pop or react with the corresponding portal if you wish to participate.""")
+        img = discord.File('images/exaltedWizard.png', filename='image.png')
+        embed.set_thumbnail(url='attachment://image.png')
+        msg = await ctx.send(file=img, embed=embed)
+        await msg.add_reaction('<:shattersPortal:874068565559488522>')
+        await msg.add_reaction('<:shattersKey:874070162574311504>')
+        await msg.add_reaction('<:nestPortal:874068640708853810>')
+        await msg.add_reaction('<:nestKey:874070151685898292>')
+        await msg.add_reaction('<:fungalPortal:874068627098337320>')
+        await msg.add_reaction('<:fungalKey:874070120132124684>')
+        await msg.add_reaction('<:cultPortal:874068612032368640>')
+        await msg.add_reaction('<:voidPortal:874068593422262373>')
+        await msg.add_reaction('<:hallsKey:874070141170749470>')
+    elif(dungeon == 'o3' or dungeon == 'O3' or dungeon == 'Oryx 3'):
+        embed = discord.Embed(title='Headcount for Oryx 3', color=discord.Color.blue(),
+                              timestamp=datetime.datetime.utcnow())
+        img = discord.File('images/o3.png', filename='image.png')
+        embed.set_thumbnail(url='attachment://image.png')
+        msg = await ctx.send(file=img, embed=embed)
+        await msg.add_reaction('<:osancPortal:874068648115982438>')
+        await msg.add_reaction('<:shieldRune:874070197949071402>')
+        await msg.add_reaction('<:helmetRune:874070181675163658>')
+        await msg.add_reaction('<:swordRune:874070189141004429>')
+        await msg.add_reaction('<:inc:874079430002221077>')
+    elif(dungeon == 'shatters' or dungeon == 'Shatters'):
+        embed = discord.Embed(title='Headcount for The Shatters', color=discord.Color.blue(),
+                              timestamp=datetime.datetime.utcnow())
+        img = discord.File('images/forgottenKing.png', filename='image.png')
+        embed.set_thumbnail(url='attachment://image.png')
+        msg = await ctx.send(file=img, embed=embed)
+        await msg.add_reaction('<:shattersPortal:874068565559488522>')
+        await msg.add_reaction('<:shattersKey:874070162574311504>')
+
 
 bot.run(TOKEN)
