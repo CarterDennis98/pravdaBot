@@ -120,6 +120,7 @@ async def poll(ctx, title='Poll', *options: str):
                                 generate rune check (!hc [runes], or generate headcount for all dungeons (!hc)""")
 async def hc(ctx, dungeon='all'):
     await ctx.channel.purge(limit=1)
+    dungeon = dungeon.lower()
     if(dungeon == 'exaltations'):
         embed = discord.Embed(title='Headcount for Exaltation Dungeons', color=discord.Color.blue(),
                               timestamp=datetime.datetime.utcnow())
@@ -137,7 +138,7 @@ async def hc(ctx, dungeon='all'):
         await msg.add_reaction('<:cultPortal:874068612032368640>')
         await msg.add_reaction('<:voidPortal:874068593422262373>')
         await msg.add_reaction('<:hallsKey:874070141170749470>')
-    elif(dungeon == 'o3' or dungeon == 'O3' or dungeon == 'Oryx 3'):
+    elif(dungeon == 'o3' or dungeon == 'oryx 3' or dungeon == 'oryx3'):
         embed = discord.Embed(title='Headcount for Oryx 3', color=discord.Color.blue(),
                               timestamp=datetime.datetime.utcnow())
         embed.add_field(name=f'Headcount for Oryx 3 started by {ctx.message.author.name}!',
@@ -150,7 +151,7 @@ async def hc(ctx, dungeon='all'):
         await msg.add_reaction('<:helmetRune:874070181675163658>')
         await msg.add_reaction('<:swordRune:874070189141004429>')
         await msg.add_reaction('<:inc:874079430002221077>')
-    elif(dungeon == 'shatters' or dungeon == 'Shatters'):
+    elif(dungeon == 'shatters'):
         embed = discord.Embed(title='Headcount for The Shatters', color=discord.Color.blue(),
                               timestamp=datetime.datetime.utcnow())
         embed.add_field(name=f'Headcount for The Shatters started by {ctx.message.author.name}!',
@@ -160,7 +161,7 @@ async def hc(ctx, dungeon='all'):
         msg = await ctx.send(file=img, embed=embed)
         await msg.add_reaction('<:shattersPortal:874068565559488522>')
         await msg.add_reaction('<:shattersKey:874070162574311504>')
-    elif(dungeon == 'nest' or dungeon == 'Nest'):
+    elif(dungeon == 'nest'):
         embed = discord.Embed(title='Headcount for The Nest', color=discord.Color.blue(),
                               timestamp=datetime.datetime.utcnow())
         embed.add_field(name=f'Headcount for The Nest started by {ctx.message.author.name}!',
@@ -170,7 +171,7 @@ async def hc(ctx, dungeon='all'):
         msg = await ctx.send(file=img, embed=embed)
         await msg.add_reaction('<:nestPortal:874068640708853810>')
         await msg.add_reaction('<:nestKey:874070151685898292>')
-    elif(dungeon == 'fungal' or dungeon == 'Fungal'):
+    elif(dungeon == 'fungal'):
         embed = discord.Embed(title='Headcount for Fungal Cavern', color=discord.Color.blue(),
                               timestamp=datetime.datetime.utcnow())
         embed.add_field(name=f'Headcount for Fungal Cavern started by {ctx.message.author.name}!',
@@ -180,7 +181,7 @@ async def hc(ctx, dungeon='all'):
         msg = await ctx.send(file=img, embed=embed)
         await msg.add_reaction('<:fungalPortal:874068627098337320>')
         await msg.add_reaction('<:fungalKey:874070120132124684>')
-    elif(dungeon == 'cult' or dungeon == 'Cult'):
+    elif(dungeon == 'cult'):
         embed = discord.Embed(title='Headcount for Cultist Hideout', color=discord.Color.blue(),
                               timestamp=datetime.datetime.utcnow())
         embed.add_field(name=f'Headcount for Cultist Hideout started by {ctx.message.author.name}!',
@@ -190,7 +191,7 @@ async def hc(ctx, dungeon='all'):
         msg = await ctx.send(file=img, embed=embed)
         await msg.add_reaction('<:cultPortal:874068612032368640>')
         await msg.add_reaction('<:hallsKey:874070141170749470>')
-    elif(dungeon == 'void' or dungeon == 'Void'):
+    elif(dungeon == 'void'):
         embed = discord.Embed(title='Headcount for The Void', color=discord.Color.blue(),
                               timestamp=datetime.datetime.utcnow())
         embed.add_field(name=f'Headcount for The Void started by {ctx.message.author.name}!',
@@ -200,6 +201,228 @@ async def hc(ctx, dungeon='all'):
         msg = await ctx.send(file=img, embed=embed)
         await msg.add_reaction('<:voidPortal:874068593422262373>')
         await msg.add_reaction('<:hallsKey:874070141170749470>')
+    elif(dungeon == 'pcave' or dungeon == 'pirate cave' or dungeon == 'forest maze' or dungeon == 'sden'
+         or dungeon == 'spider den' or dungeon == 'snake pit' or dungeon == 'fjungle' or dungeon == 'forbidden jungle'
+         or dungeon == 'hive' or dungeon == 'mwoods' or dungeon == 'magic woods' or dungeon == 'sprite'
+         or dungeon == 'sprite world' or dungeon == 'cland' or dungeon == 'candyland' or dungeon == 'ruins'
+         or dungeon == 'ancient ruins' or dungeon == 'tcave' or dungeon == 'coatt' or dungeon == 'udl'
+         or dungeon == 'undead lair' or dungeon == 'abyss' or dungeon == 'abyss of demons' or dungeon == 'manor'
+         or dungeon == 'puppet' or dungeon == 'sewers' or dungeon == 'library' or dungeon == 'cursed library'
+         or dungeon == 'cem' or dungeon == 'cemetery' or dungeon == 'haunted cem' or dungeon == 'haunted cemetery'
+         or dungeon == 'machine' or dungeon == 'the machine' or dungeon == 'lab' or dungeon == 'mad lab'
+         or dungeon == 'mlab' or dungeon == 'ddocks' or dungeon == 'deadwater docks' or dungeon == 'wlab'
+         or dungeon == 'woodlab' or dungeon == 'woodland labyrinth' or dungeon == 'cdepths' or dungeon == 'cd'
+         or dungeon == 'crawling depths' or dungeon == 'parasite' or dungeon == 'para' or dungeon == 'beachzone'
+         or dungeon == '3d' or dungeon == 'third dimension' or dungeon == 'davy jones' or dungeon == 'davy'
+         or dungeon == 'mt' or dungeon == 'mountain temple' or dungeon == 'lod' or dungeon == 'lair of draconis'
+         or dungeon == 'ot' or dungeon == 'trench' or dungeon == 'ocean trench' or dungeon == 'ice cave'
+         or dungeon == 'tomb' or dungeon == 'malogia' or dungeon == 'red' or dungeon == 'red alien'
+         or dungeon == 'untaris' or dungeon == 'blue' or dungeon == 'blue alien' or dungeon == 'forax'
+         or dungeon == 'green' or dungeon == 'green alien' or dungeon == 'katalund' or dungeon == 'yellow'
+         or dungeon == 'yellow alien' or dungeon == 'shaitan' or dungeon == 'pup encore' or dungeon == 'encore'
+         or dungeon == 'puppet encore' or dungeon == 'reef' or dungeon == 'cnidarian reef' or dungeon == 'thicket'
+         or dungeon == 'htt' or dungeon == 'hudl' or dungeon == 'heroic udl' or dungeon == 'habyss'
+         or dungeon == 'heroic abyss' or dungeon == 'bnex' or dungeon == 'bnexus' or dungeon == 'battle nexus' 
+         or dungeon == 'bella' or dungeon == 'bellas' or dungeon == 'belladonna' or dungeon == 'ice tomb'
+         or dungeon == 'rainbow' or dungeon == 'rainbow road' or dungeon == 'mgm' or dungeon == 'mad god mayhem'):
+        if(dungeon == 'pcave' or dungeon == 'pirate cave'):
+            dungeon = 'Pirate Cave'
+            thumb = discord.File('images/dreadstump.png', filename='image.png')
+            dColor = discord.Color.from_rgb(159,93,69)
+        elif(dungeon == 'forest maze'):
+            dungeon = 'Forest Maze'
+            thumb = discord.File('images/mamaMegamoth.png', filename='image.png')
+            dColor = discord.Color.from_rgb(86,125,0)
+        elif(dungeon == 'sden' or dungeon == 'spider den'):
+            dungeon = 'Spider Den'
+            thumb = discord.File('images/arachna.png', filename='image.png')
+            dColor = discord.Color.from_rgb(87,122,67)
+        elif(dungeon == 'snake pit'):
+            dungeon = 'Snake Pit'
+            thumb = discord.File('images/stheno.png', filename='image.png')
+            dColor = discord.Color.from_rgb(81,166,80)
+        elif(dungeon == 'fjungle' or dungeon == 'forbidden jungle'):
+            dungeon = 'Forbidden Jungle'
+            thumb = discord.File('images/mixcoatl.png', filename='image.png')
+            dColor = discord.Color.from_rgb(140,35,205)
+        elif(dungeon == 'hive'):
+            dungeon = 'The Hive'
+            thumb = discord.File('images/queenBeeHive.png', filename='image.png')
+            dColor = discord.Color.from_rgb(251,198,65)
+        elif(dungeon == 'mwoods' or dungeon == 'magic woods'):
+            dungeon = 'Magic Woods'
+            thumb = discord.File('images/fountainSpirit.png', filename='image.png')
+            dColor = discord.Color.from_rgb(128,202,241)
+        elif(dungeon == 'sprite' or dungeon == 'sprite world'):
+            dungeon = 'Sprite World'
+            thumb = discord.File('images/limon.png', filename='image.png')
+            dColor = discord.Color.from_rgb(192,58,49)
+        elif(dungeon == 'cland' or dungeon == 'candyland'):
+            dungeon = 'Candyland Hunting Grounds'
+            thumb = discord.File('images/gigacorn.png', filename='image.png')
+            dColor = discord.Color.from_rgb(225,146,199)
+        elif(dungeon == 'ruins' or dungeon == 'ancient ruins'):
+            dungeon = 'Ancient Ruins'
+            thumb = discord.File('images/sandstoneTitan.png', filename='image.png')
+            dColor = discord.Color.from_rgb(205,177,107)
+        elif(dungeon == 'tcave' or dungeon == 'coatt'):
+            dungeon = 'Cave of a Thousand Treasures'
+            thumb = discord.File('images/goldenOryx.png', filename='image.png')
+            dColor = discord.Color.from_rgb(231,209,16)
+        elif(dungeon == 'udl' or dungeon == 'undead lair'):
+            dungeon = 'Undead Lair'
+            thumb = discord.File('images/septavius.png', filename='image.png')
+            dColor = discord.Color.from_rgb(102,112,145)
+        elif(dungeon == 'abyss' or dungeon == 'abyss of demons'):
+            dungeon = 'Abyss of Demons'
+            thumb = discord.File('images/malphas.png', filename='image.png')
+            dColor = discord.Color.from_rgb(162,34,37)
+        elif(dungeon == 'manor'):
+            dungeon = 'Manor of the Immortals'
+            thumb = discord.File('images/ruthven.png', filename='image.png')
+            dColor = discord.Color.from_rgb(72,65,105)
+        elif(dungeon == 'puppet'):
+            dungeon = 'Puppet Master\'s Theatre'
+            thumb = discord.File('images/puppetMaster.png', filename='image.png')
+            dColor = discord.Color.from_rgb(164,4,5)
+        elif(dungeon == 'sewers'):
+            dungeon = 'Toxic Sewers'
+            thumb = discord.File('images/gulpord.png', filename='image.png')
+            dColor = discord.Color.from_rgb(83,74,22)
+        elif(dungeon == 'library' or dungeon == 'cursed library'):
+            dungeon = 'Cursed Library'
+            thumb = discord.File('images/avalon.png', filename='image.png')
+            dColor = discord.Color.from_rgb(55,62,102)
+        elif(dungeon == 'cem' or dungeon == 'cemetery' or dungeon == 'haunted cem' or dungeon == 'haunted cemetery'):
+            dungeon = 'Haunted Cemetery'
+            thumb = discord.File('images/skuld.png', filename='image.png')
+            dColor = discord.Color.from_rgb(51,98,73)
+        elif(dungeon == 'machine' or dungeon == 'the machine'):
+            dungeon = 'The Machine'
+            thumb = discord.File('images/null.png', filename='image.png')
+            dColor = discord.Color.from_rgb(88,158,26)
+        elif(dungeon == 'lab' or dungeon == 'mlab' or dungeon == 'mad lab'):
+            dungeon = 'Mad Lab'
+            thumb = discord.File('images/drTerrible.png', filename='image.png')
+            dColor = discord.Color.from_rgb(10,120,225)
+        elif(dungeon == 'ddocks' or dungeon == 'deadwater docks'):
+            dungeon = 'Deadwater Docks'
+            thumb = discord.File('images/bilgewater.png', filename='image.png')
+            dColor = discord.Color.from_rgb(152,33,65)
+        elif(dungeon == 'wlab' or dungeon == 'woodlab' or dungeon == 'woodland labyrinth'):
+            dungeon = 'Woodland Labyrinth'
+            thumb = discord.File('images/murderousMegamoth.png', filename='image.png')
+            dColor = discord.Color.from_rgb(224,113,62)
+        elif(dungeon == 'cd' or dungeon == 'cdepths' or dungeon == 'crawling depths'):
+            dungeon = 'Crawling Depths'
+            thumb = discord.File('images/arachnaSon.png', filename='image.png')
+            dColor = discord.Color.from_rgb(24,39,34)
+        elif(dungeon == 'parasite' or dungeon == 'para'):
+            dungeon = 'Parasite Chambers'
+            thumb = discord.File('images/nightmareColony.png', filename='image.png')
+            dColor = discord.Color.from_rgb(211,95,97)
+        elif(dungeon == 'beachzone'):
+            dungeon = 'Beachzone'
+            thumb = discord.File('images/partyGod.png', filename='image.png')
+            dColor = discord.Color.from_rgb(221,180,108)
+        elif(dungeon == '3d' or dungeon == 'third dimension'):
+            dungeon = 'The Third Dimension'
+            thumb = discord.File('images/tesseract.png', filename='image.png')
+            dColor = discord.Color.from_rgb(146,184,222)
+        elif(dungeon == 'davy' or dungeon == 'davy jones'):
+            dungeon = 'Davy Jones\' Locker'
+            thumb = discord.File('images/davyJones.png', filename='image.png')
+            dColor = discord.Color.from_rgb(54,46,92)
+        elif(dungeon == 'mt' or dungeon == 'mountain temple'):
+            dungeon = 'Mountain Temple'
+            thumb = discord.File('images/daichi.png', filename='image.png')
+            dColor = discord.Color.from_rgb(82,14,4)
+        elif(dungeon == 'lod' or dungeon == 'lair of draconis'):
+            dungeon = 'Lair of Draconis'
+            thumb = discord.File('images/ivoryWyvern.png', filename='image.png')
+            dColor = discord.Color.from_rgb(210,173,32)
+        elif(dungeon == 'ot' or dungeon == 'trench' or dungeon == 'ocean trench'):
+            dungeon = 'Ocean Trench'
+            thumb = discord.File('images/thessal.png', filename='image.png')
+            dColor = discord.Color.from_rgb(11,98,213)
+        elif(dungeon == 'ice cave'):
+            dungeon = 'Ice Cave'
+            thumb = discord.File('images/esben.png', filename='image.png')
+            dColor = discord.Color.from_rgb(115,199,255)
+        elif(dungeon == 'tomb'):
+            dungeon = 'Tomb of the Ancients'
+            thumb = discord.File('images/geb.png', filename='image.png')
+            dColor = discord.Color.from_rgb(225,200,117)
+        elif(dungeon == 'malogia' or dungeon == 'red' or dungeon == 'red alien'):
+            dungeon = 'Malogia'
+            thumb = discord.File('images/suesogian.png', filename='image.png')
+            dColor = discord.Color.from_rgb(176,77,84)
+        elif(dungeon == 'untaris' or dungeon == 'blue' or dungeon == 'blue alien'):
+            dungeon = 'Untaris'
+            thumb = discord.File('images/tarul.png', filename='image.png')
+            dColor = discord.Color.from_rgb(64,116,185)
+        elif(dungeon == 'forax' or dungeon == 'green' or dungeon == 'green alien'):
+            dungeon = 'Forax'
+            thumb = discord.File('images/acidus.png', filename='image.png')
+            dColor = discord.Color.from_rgb(22,115,71)
+        elif(dungeon == 'katalund' or dungeon == 'yellow' or dungeon == 'yellow alien'):
+            dungeon = 'Katalund'
+            thumb = discord.File('images/goldenSphinx.png', filename='image.png')
+            dColor = discord.Color.from_rgb(220,173,16)
+        elif(dungeon == 'shaitan'):
+            dungeon = 'Lair of Shaitan'
+            thumb = discord.File('images/shaitan.png', filename='image.png')
+            dColor = discord.Color.from_rgb(210,23,8)
+        elif(dungeon == 'encore' or dungeon == 'pup encore' or dungeon == 'puppet encore'):
+            dungeon = 'Puppet Master\'s Encore'
+            thumb = discord.File('images/puppetMasterEncore.png', filename='image.png')
+            dColor = discord.Color.from_rgb(67,65,87)
+        elif(dungeon == 'reef' or dungeon == 'cnidarian reef'):
+            dungeon = 'Cnidarian Reef'
+            thumb = discord.File('images/royalCnidarian.png', filename='image.png')
+            dColor = discord.Color.from_rgb(245,165,77)
+        elif(dungeon == 'thicket'):
+            dungeon = 'Secluded Thicket'
+            thumb = discord.File('images/xolotl.png', filename='image.png')
+            dColor = discord.Color.from_rgb(131,173,35)
+        elif(dungeon == 'htt'):
+            dungeon = 'High Tech Terror'
+            thumb = discord.File('images/feral.png', filename='image.png')
+            dColor = discord.Color.from_rgb(7,120,233)
+        elif(dungeon == 'hudl' or dungeon == 'heroic udl'):
+            dungeon = 'Heroic Undead Lair'
+            thumb = discord.File('images/heroicSeptavius.png', filename='image.png')
+            dColor = discord.Color.from_rgb(232,171,39)
+        elif(dungeon == 'habyss' or dungeon == 'heroic abyss'):
+            dungeon = 'Heroic Abyss of Demons'
+            thumb = discord.File('images/heroicMalphas.png', filename='image.png')
+            dColor = discord.Color.from_rgb(232,171,39)
+        elif(dungeon == 'bnex' or dungeon == 'bnexus' or dungeon == 'battle nexus'):
+            dungeon = 'Battle for the Nexus'
+            thumb = discord.File('images/oryxDeux.png', filename='image.png')
+            dColor = discord.Color.from_rgb(148,16,13)
+        elif(dungeon == 'bella' or dungeon == 'bellas' or dungeon == 'belladonna'):
+            dungeon = 'Belladonna\'s Garden'
+            thumb = discord.File('images/belladonna.png', filename='image.png')
+            dColor = discord.Color.from_rgb(235,137,160)
+        elif(dungeon == 'ice tomb'):
+            dungeon = 'Ice Tomb'
+            thumb = discord.File('images/iceShard.png', filename='image.png')
+            dColor = discord.Color.from_rgb(157,244,234)
+        elif(dungeon == 'rainbow' or dungeon == 'rainbow road'):
+            dungeon = 'Rainbow Road'
+            thumb = discord.File('images/potOfGold.png', filename='image.png')
+            dColor = discord.Color.from_rgb(28,195,44)
+        elif(dungeon == 'mgm' or dungeon == 'mad god mayhem'):
+            dungeon = 'Mad God Mayhem'
+            thumb = discord.File('images/decaract.png', filename='image.png')
+            dColor = discord.Color.from_rgb(244,0,10)
 
-
+        embed = discord.Embed(title=f'Headcount for {dungeon}', color=dColor, timestamp=datetime.datetime.utcnow())
+        embed.add_field(name=f'Headcount for {dungeon} started by {ctx.message.author.name}!',
+                        value='React with <:dungeonPortal:874070478128562236> to join or with <:dungeonKey:874070489163776060> if you have keys you want to pop.')
+        embed.set_thumbnail(url=f'attachment://image.png')
+        msg = await ctx.send(file=thumb, embed=embed)
+        await msg.add_reaction('<:dungeonPortal:874070478128562236>')
+        await msg.add_reaction('<:dungeonKey:874070489163776060>')
 bot.run(TOKEN)
