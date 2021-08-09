@@ -139,7 +139,7 @@ async def hc(ctx, dungeon='all'):
         await msg.add_reaction('<:voidPortal:874068593422262373>')
         await msg.add_reaction('<:hallsKey:874070141170749470>')
     elif(dungeon == 'o3' or dungeon == 'oryx 3' or dungeon == 'oryx3'):
-        embed = discord.Embed(title='Headcount for Oryx 3', color=discord.Color.blue(),
+        embed = discord.Embed(title='Headcount for Oryx 3', color=discord.Color.from_rgb(235,214,110),
                               timestamp=datetime.datetime.utcnow())
         embed.add_field(name=f'Headcount for Oryx 3 started by {ctx.message.author.name}!',
                         value='React with <:osancPortal:874068648115982438> to participate or with <:shieldRune:874070197949071402> <:helmetRune:874070181675163658> <:swordRune:874070189141004429> <:inc:874079430002221077> if you have runes/inc you want to pop.')
@@ -151,8 +151,17 @@ async def hc(ctx, dungeon='all'):
         await msg.add_reaction('<:helmetRune:874070181675163658>')
         await msg.add_reaction('<:swordRune:874070189141004429>')
         await msg.add_reaction('<:inc:874079430002221077>')
+        await msg.add_reaction('<:knight:874140434203570216>')
+        await msg.add_reaction('<:warrior:874140400695250974>')
+        await msg.add_reaction('<:paladin:874140420760817685>')
+        await msg.add_reaction('<:priest:874141506011807805>')
+        await msg.add_reaction('<:slow:874141187592822784>')
+        await msg.add_reaction('<:armorBreak:874141141744881694>')
+        await msg.add_reaction('<:curse:874141153811922966>')
+        await msg.add_reaction('<:daze:874141162200526848>')
+        await msg.add_reaction('<:expose:874141172442992690>')
     elif(dungeon == 'shatters'):
-        embed = discord.Embed(title='Headcount for The Shatters', color=discord.Color.blue(),
+        embed = discord.Embed(title='Headcount for The Shatters', color=discord.Color.from_rgb(59,62,59),
                               timestamp=datetime.datetime.utcnow())
         embed.add_field(name=f'Headcount for The Shatters started by {ctx.message.author.name}!',
                         value='React with <:shattersPortal:874068565559488522> to join or with <:shattersKey:874070162574311504> if you have keys you want to pop.')
@@ -161,8 +170,17 @@ async def hc(ctx, dungeon='all'):
         msg = await ctx.send(file=img, embed=embed)
         await msg.add_reaction('<:shattersPortal:874068565559488522>')
         await msg.add_reaction('<:shattersKey:874070162574311504>')
+        await msg.add_reaction('<:knight:874140434203570216>')
+        await msg.add_reaction('<:warrior:874140400695250974>')
+        await msg.add_reaction('<:paladin:874140420760817685>')
+        await msg.add_reaction('<:priest:874141506011807805>')
+        await msg.add_reaction('<:slow:874141187592822784>')
+        await msg.add_reaction('<:armorBreak:874141141744881694>')
+        await msg.add_reaction('<:curse:874141153811922966>')
+        await msg.add_reaction('<:daze:874141162200526848>')
+        await msg.add_reaction('<:expose:874141172442992690>')
     elif(dungeon == 'nest'):
-        embed = discord.Embed(title='Headcount for The Nest', color=discord.Color.blue(),
+        embed = discord.Embed(title='Headcount for The Nest', color=discord.Color.from_rgb(231,121,28),
                               timestamp=datetime.datetime.utcnow())
         embed.add_field(name=f'Headcount for The Nest started by {ctx.message.author.name}!',
                         value='React with <:nestPortal:874068640708853810> to join or with <:nestKey:874070151685898292> if you have keys you want to pop.')
@@ -171,8 +189,17 @@ async def hc(ctx, dungeon='all'):
         msg = await ctx.send(file=img, embed=embed)
         await msg.add_reaction('<:nestPortal:874068640708853810>')
         await msg.add_reaction('<:nestKey:874070151685898292>')
+        await msg.add_reaction('<:knight:874140434203570216>')
+        await msg.add_reaction('<:warrior:874140400695250974>')
+        await msg.add_reaction('<:paladin:874140420760817685>')
+        await msg.add_reaction('<:priest:874141506011807805>')
+        await msg.add_reaction('<:slow:874141187592822784>')
+        await msg.add_reaction('<:armorBreak:874141141744881694>')
+        await msg.add_reaction('<:curse:874141153811922966>')
+        await msg.add_reaction('<:daze:874141162200526848>')
+        await msg.add_reaction('<:expose:874141172442992690>')
     elif(dungeon == 'fungal'):
-        embed = discord.Embed(title='Headcount for Fungal Cavern', color=discord.Color.blue(),
+        embed = discord.Embed(title='Headcount for Fungal Cavern', color=discord.Color.from_rgb(189,46,206),
                               timestamp=datetime.datetime.utcnow())
         embed.add_field(name=f'Headcount for Fungal Cavern started by {ctx.message.author.name}!',
                         value='React with <:fungalPortal:874068627098337320> to join or with <:fungalKey:874070120132124684> if you have keys you want to pop.')
@@ -181,8 +208,17 @@ async def hc(ctx, dungeon='all'):
         msg = await ctx.send(file=img, embed=embed)
         await msg.add_reaction('<:fungalPortal:874068627098337320>')
         await msg.add_reaction('<:fungalKey:874070120132124684>')
+        await msg.add_reaction('<:knight:874140434203570216>')
+        await msg.add_reaction('<:warrior:874140400695250974>')
+        await msg.add_reaction('<:paladin:874140420760817685>')
+        await msg.add_reaction('<:priest:874141506011807805>')
+        await msg.add_reaction('<:slow:874141187592822784>')
+        await msg.add_reaction('<:armorBreak:874141141744881694>')
+        await msg.add_reaction('<:curse:874141153811922966>')
+        await msg.add_reaction('<:daze:874141162200526848>')
+        await msg.add_reaction('<:expose:874141172442992690>')
     elif(dungeon == 'cult'):
-        embed = discord.Embed(title='Headcount for Cultist Hideout', color=discord.Color.blue(),
+        embed = discord.Embed(title='Headcount for Cultist Hideout', color=discord.Color.from_rgb(155,25,26),
                               timestamp=datetime.datetime.utcnow())
         embed.add_field(name=f'Headcount for Cultist Hideout started by {ctx.message.author.name}!',
                         value='React with <:cultPortal:874068612032368640> to join or with <:hallsKey:874070141170749470> if you have keys you want to pop.')
@@ -191,16 +227,35 @@ async def hc(ctx, dungeon='all'):
         msg = await ctx.send(file=img, embed=embed)
         await msg.add_reaction('<:cultPortal:874068612032368640>')
         await msg.add_reaction('<:hallsKey:874070141170749470>')
+        await msg.add_reaction('<:knight:874140434203570216>')
+        await msg.add_reaction('<:warrior:874140400695250974>')
+        await msg.add_reaction('<:paladin:874140420760817685>')
+        await msg.add_reaction('<:priest:874141506011807805>')
+        await msg.add_reaction('<:slow:874141187592822784>')
+        await msg.add_reaction('<:armorBreak:874141141744881694>')
+        await msg.add_reaction('<:curse:874141153811922966>')
+        await msg.add_reaction('<:daze:874141162200526848>')
+        await msg.add_reaction('<:expose:874141172442992690>')
     elif(dungeon == 'void'):
-        embed = discord.Embed(title='Headcount for The Void', color=discord.Color.blue(),
+        embed = discord.Embed(title='Headcount for The Void', color=discord.Color.from_rgb(27,4,110),
                               timestamp=datetime.datetime.utcnow())
         embed.add_field(name=f'Headcount for The Void started by {ctx.message.author.name}!',
-                        value='React with <:voidPortal:874068593422262373> to join or with <:hallsKey:874070141170749470> if you have keys you want to pop.')
+                        value='React with <:voidPortal:874068593422262373> to join, <:hallsKey:874070141170749470> if you have keys you want to pop, or <:vial:874140033593004082> if you are bringing vial.')
         img = discord.File('images/void.png', filename='image.png')
         embed.set_thumbnail(url='attachment://image.png')
         msg = await ctx.send(file=img, embed=embed)
         await msg.add_reaction('<:voidPortal:874068593422262373>')
         await msg.add_reaction('<:hallsKey:874070141170749470>')
+        await msg.add_reaction('<:vial:874140033593004082>')
+        await msg.add_reaction('<:knight:874140434203570216>')
+        await msg.add_reaction('<:warrior:874140400695250974>')
+        await msg.add_reaction('<:paladin:874140420760817685>')
+        await msg.add_reaction('<:priest:874141506011807805>')
+        await msg.add_reaction('<:slow:874141187592822784>')
+        await msg.add_reaction('<:armorBreak:874141141744881694>')
+        await msg.add_reaction('<:curse:874141153811922966>')
+        await msg.add_reaction('<:daze:874141162200526848>')
+        await msg.add_reaction('<:expose:874141172442992690>')
     elif(dungeon == 'pcave' or dungeon == 'pirate cave' or dungeon == 'forest maze' or dungeon == 'sden'
          or dungeon == 'spider den' or dungeon == 'snake pit' or dungeon == 'fjungle' or dungeon == 'forbidden jungle'
          or dungeon == 'hive' or dungeon == 'mwoods' or dungeon == 'magic woods' or dungeon == 'sprite'
