@@ -6,7 +6,7 @@ from discord import file
 from discord.ext import commands
 
 # Get bot token
-TOKEN = os.environ("TOKEN")
+TOKEN = os.environ["TOKEN"]
 
 bot = commands.Bot(command_prefix='!')
 
