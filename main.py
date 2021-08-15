@@ -4,11 +4,9 @@ import asyncio
 import discord
 from discord import file
 from discord.ext import commands
-from dotenv import load_dotenv
 
 # Get bot token
-load_dotenv()
-TOKEN = os.getenv('DISCORD_TOKEN')
+TOKEN = os.environ('TOKEN')
 
 bot = commands.Bot(command_prefix='!')
 
@@ -480,4 +478,5 @@ async def hc(ctx, dungeon='all'):
         msg = await ctx.send(file=thumb, embed=embed)
         await msg.add_reaction('<:dungeonPortal:874070478128562236>')
         await msg.add_reaction('<:dungeonKey:874070489163776060>')
+
 bot.run(TOKEN)
