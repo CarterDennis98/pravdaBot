@@ -122,7 +122,7 @@ async def hc(ctx, dungeon='all'):
     await ctx.channel.purge(limit=1)
     dungeon = dungeon.lower()
     if(dungeon == 'exaltations'):
-        embed = discord.Embed(title='Headcount for Exaltation Dungeons', color=discord.Color.blue(),
+        embed = discord.Embed(title=f'Headcount for Exaltation Dungeons', color=discord.Color.blue(),
                               timestamp=datetime.datetime.utcnow())
         embed.add_field(name=f'Headcount started for Exaltation Dungeons by {ctx.message.author.name}!',
                         value='React with any keys you are willing to pop or react with the corresponding portal if you wish to participate.')

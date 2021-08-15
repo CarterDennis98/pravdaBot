@@ -1,0 +1,1 @@
+worker: python3 E:/code/discBot/main.py
