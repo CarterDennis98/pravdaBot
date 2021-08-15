@@ -1,1 +1,1 @@
-worker: python3 E:/code/discBot/main.py
+worker: python3 main.py
