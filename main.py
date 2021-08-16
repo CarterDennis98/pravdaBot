@@ -32,6 +32,7 @@ async def getCommands(ctx):
 @bot.command(name='purge', help="""Purges messages from current channel. Defaults to 
                                    20 messages, use !purge [amount] to delete set amount
                                    or !purge all to clear entire channel.""")
+@commands.has_any_role('Admin', 'Leader', 'Officer')
 async def purge(ctx, amount=''):
     # Get number of messages in the channel
     numMsg = 0
