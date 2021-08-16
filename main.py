@@ -114,8 +114,8 @@ async def poll(ctx, title='Poll', *options: str):
 
 # Key headcount/interest check
 @bot.command(name='hc', help="""Set up a headcount for the desire dungeon with !hc ["dungone name"], 
-                                generate headcount for exaltation dungeons (!hc [exaltation]),
-                                generate rune check (!hc [runes], or generate headcount for all dungeons (!hc)""")
+                                generate headcount for exaltation dungeons (!hc [exaltation]), or
+                                generate rune check (!hc [runes]""")
 async def hc(ctx, dungeon='all'):
     await ctx.channel.purge(limit=1)
     dungeon = dungeon.lower()
@@ -234,7 +234,7 @@ async def hc(ctx, dungeon='all'):
         await msg.add_reaction('<:curse:874141153811922966>')
         await msg.add_reaction('<:daze:874141162200526848>')
         await msg.add_reaction('<:expose:874141172442992690>')
-    elif(dungeon == 'void'):
+    elif(dungeon == 'void' or dungeon == 'the void'):
         embed = discord.Embed(title='Headcount for The Void', color=discord.Color.from_rgb(27,4,110),
                               timestamp=datetime.datetime.utcnow())
         embed.add_field(name=f'Headcount for The Void started by {ctx.message.author.name}!',
